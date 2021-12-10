@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-// @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
 
 *, *::after, *::before{
@@ -19,6 +19,10 @@ body{
     width: 100%;
     height: 100vh;
 }
+
+// #root{
+//     height: 100%;
+// }
 `;
 
 export default GlobalStyle;

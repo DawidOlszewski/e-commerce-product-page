@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ImgButton from 'Atoms/ImgButton/ImgButton';
 
-import { Grid, BigImg } from './Gallery.style';
+import { Grid, BigImg } from './DesktopGallery.style';
 
 import image1 from 'assets/img/image-product-1.jpg';
 import image2 from 'assets/img/image-product-2.jpg';
@@ -14,7 +14,7 @@ import imageThum4 from 'assets/img/image-product-4-thumbnail.jpg';
 const images = [image1, image2, image3, image4];
 const imageThumbs = [imageThum1, imageThum2, imageThum3, imageThum4];
 
-const Gallery = (props) => {
+const DesktopGallery = (props) => {
   const [focused, setfocused] = useState(0);
 
   return (
@@ -35,4 +35,4 @@ const Gallery = (props) => {
   );
 };
 
-export default Gallery;
+export default DesktopGallery;

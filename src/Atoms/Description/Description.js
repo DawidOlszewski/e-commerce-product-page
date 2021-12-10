@@ -11,3 +11,5 @@ const Description = (props) => (
     <Details>{props.Details}</Details>
   </div>
 );
+
+export default Description;

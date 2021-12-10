@@ -5,6 +5,7 @@ export const Grid = styled.div`
   width: 100%;
   gap: 5%;
   grid-template-columns: repeat(4, 1fr);
+  // grid-template-rows:
   grid-template-areas: 'big-img big-img big-img big-img' 'img0 img1 img2 img3';
 
   > img {
