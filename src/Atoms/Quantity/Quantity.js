@@ -10,38 +10,38 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const initialState = {
-  quantity: 0,
-  negError: false,
-};
+// const initialState = {
+//   quantity: 0,
+//   negError: false,
+// };
 
-function reducer(state, action) {
-  let newState = { ...initialState };
+// function reducer(state, action) {
+//   let newState = { ...initialState };
 
-  switch (action.type) {
-    case 'increment':
-      newState.quantity = state.quantity + 1;
-      return newState;
-    case 'decrement':
-      newState.quantity = state.quantity - 1;
-      if (newState.quantity < 0) {
-        newState.negError = true;
-        newState.quantity = 0;
-      }
-      return newState;
-    default:
-      throw new Error();
-  }
-}
+//   switch (action.type) {
+//     case 'increment':
+//       newState.quantity = state.quantity + 1;
+//       return newState;
+//     case 'decrement':
+//       newState.quantity = state.quantity - 1;
+//       if (newState.quantity < 0) {
+//         newState.negError = true;
+//         newState.quantity = 0;
+//       }
+//       return newState;
+//     default:
+//       throw new Error();
+//   }
+// }
 
-const Quantity = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const Quantity = ({ dispatch, quantity, negError }) => {
+  // const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Container>
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-      <h2>{state.quantity}</h2>
+      <h2>{quantity}</h2>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-      {state.negError ? <h3>Error</h3> : ''}
+      {negError ? <h3>Error</h3> : ''}
     </Container>
   );
 };

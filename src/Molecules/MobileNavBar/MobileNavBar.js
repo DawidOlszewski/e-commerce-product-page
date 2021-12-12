@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ReactComponent as Logo } from 'assets/img/logo.svg';
 import cartPath from 'assets/img/icon-cart.svg';
 import avatarPath from 'assets/img/image-avatar.png';
+import CartPopUp from 'Molecules/CartPopUp/CartPopUp';
+import { useState } from 'react';
 
 const StyledBurger = styled.button`
   position: relative;
@@ -81,18 +83,26 @@ const StyledHeader = styled.header`
   }
 `;
 
-const MobileNavBar = ({ open, setOpen }) => {
+const MobileNavBar = ({ openMenu: open, setOpenMenu: setOpen, cartArray }) => {
+  const [openCart, setOpenCart] = useState({});
+
   return (
-    <StyledHeader>
-      <StyledBurger open={open} onClick={() => setOpen((open) => !open)}>
-        <div />
-        <div />
-        <div />
-      </StyledBurger>
-      <Logo></Logo>
-      <CounterCart amount="2" />
-      <img src={avatarPath} alt="avatar" />
-    </StyledHeader>
+    <>
+      <StyledHeader>
+        <StyledBurger open={open} onClick={() => setOpen((open) => !open)}>
+          <div />
+          <div />
+          <div />
+        </StyledBurger>
+        <Logo></Logo>
+        <CounterCart
+          amount={cartArray.length}
+          onClick={() => setOpenCart((open) => !open)}
+        />
+        <img src={avatarPath} alt="avatar" />
+      </StyledHeader>
+      <CartPopUp openCart={openCart} cartArray={cartArray} />
+    </>
   );
 };
 

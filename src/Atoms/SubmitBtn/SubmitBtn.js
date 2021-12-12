@@ -1,17 +1,16 @@
 import styled from 'styled-components';
-import iconCart from 'assets/img/icon-cart.svg';
 
 const StyledBtn = styled.button`
   background-color: blue;
-  width: 100px;
-  height: 40px;
+  width: 90%;
+  height: 57px;
 `;
 
-const SubmitBtn = ({ src, alt, ...props }) => {
+const SubmitBtn = ({ src, alt, icon, text, ...props }) => {
   return (
     <StyledBtn {...props}>
-      <img src={iconCart} />
-      123
+      <img src={icon} alt={props.alt} />
+      {text}
     </StyledBtn>
   );
 };

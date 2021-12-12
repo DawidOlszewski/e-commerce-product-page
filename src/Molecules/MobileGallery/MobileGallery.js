@@ -30,6 +30,7 @@ const Container = styled.div`
   }
 
   img {
+    display: block;
     width: 100%;
   }
 `;

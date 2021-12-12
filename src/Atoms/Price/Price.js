@@ -19,10 +19,11 @@ const Price = (props) => {
   return (
     <Container>
       <div>
-        <h2>${props.cost}</h2>
-        <h3>{(props.cost / props.prevCost) * 100}%</h3>
+        <h2>${props.Price}</h2>
+        {console.log(typeof props.Price)}
+        <h3>{(props.Price / props.prevPrice) * 100}%</h3>
       </div>
-      <h3>${props.prevCost}</h3>
+      <h3>${props.prevPrice}</h3>
     </Container>
   );
 };
