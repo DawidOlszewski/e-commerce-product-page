@@ -14,9 +14,8 @@ import useWindowDimensions from 'WindowDimentions';
 import Description from 'Atoms/Description/Description';
 import iconCartPath from 'assets/img/icon-cart.svg';
 
-const Grid = styled.div`
-  // background-color: ${(props) => props.theme.color.orange};
-  display: grid;
+const Container = styled.div`
+  padding: 20px;
 `;
 
 //quantity
@@ -68,24 +67,26 @@ function ProductPage({
         />
         <MobileMenu open={openMenu} />
         <MobileGallery />
-        <Description Company={company} Title={title} Details={description} />
-        <Price Price={price} prevPrice={prevPrice}></Price>
-        <Quantity
-          quantity={state.quantity}
-          dispatch={dispatch}
-          negError={state.negError}
-        ></Quantity>
-        <SubmitBtn
-          icon={iconCartPath}
-          alt="cart icon"
-          text="Add to cart"
-          onClick={() =>
-            setCartArray((cartArray) => [
-              ...cartArray,
-              { title: title, amount: state.quantity },
-            ])
-          }
-        ></SubmitBtn>
+        <Container>
+          <Description Company={company} Title={title} Details={description} />
+          <Price Price={price} prevPrice={prevPrice}></Price>
+          <Quantity
+            quantity={state.quantity}
+            dispatch={dispatch}
+            negError={state.negError}
+          ></Quantity>
+          <SubmitBtn
+            icon={iconCartPath}
+            alt="cart icon"
+            text="Add to cart"
+            onClick={() =>
+              setCartArray((cartArray) => [
+                ...cartArray,
+                { title: title, amount: state.quantity },
+              ])
+            }
+          ></SubmitBtn>
+        </Container>
       </>
     </ThemeProvider>
   );

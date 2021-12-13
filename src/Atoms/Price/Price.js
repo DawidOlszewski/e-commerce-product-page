@@ -1,17 +1,22 @@
 import styled from 'styled-components';
 
+const Reduction = styled.h2``;
 const Container = styled.div`
   div {
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
 
-    h3 {
+    ${Reduction} {
+      font-size: 10px;
+      padding: 5px 10px;
+      margin-left: 20px;
       border-radius: 10px;
       background-color: orange;
     }
   }
   h3 {
+    text-decoration: line-through;
   }
 `;
 
@@ -19,11 +24,10 @@ const Price = (props) => {
   return (
     <Container>
       <div>
-        <h2>${props.Price}</h2>
-        {console.log(typeof props.Price)}
-        <h3>{(props.Price / props.prevPrice) * 100}%</h3>
+        <h2>${props.Price}.00</h2>
+        <Reduction>{(props.Price / props.prevPrice) * 100}%</Reduction>
       </div>
-      <h3>${props.prevPrice}</h3>
+      <h3>${props.prevPrice}.00</h3>
     </Container>
   );
 };

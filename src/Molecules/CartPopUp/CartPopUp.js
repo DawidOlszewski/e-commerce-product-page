@@ -8,9 +8,8 @@ const Container = styled.div`
   right: 20px;
   position: absolute;
   min-height: 100px;
-  background-color: violet;
+  background-color: ${({ theme }) => theme.color.white};
   z-index: 1000; //TODO: change the z-indexes
-  padding: 10px;
 
   h2 {
     position: relative;
@@ -33,7 +32,6 @@ const Container = styled.div`
 
   ul {
     list-style: none;
-    padding: 10px;
   }
 
   li {

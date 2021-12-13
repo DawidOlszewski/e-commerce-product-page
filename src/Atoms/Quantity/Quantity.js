@@ -1,13 +1,30 @@
 import styled from 'styled-components';
 import { useReducer } from 'react';
 
+import { ReactComponent as PlusIcon } from 'assets/img/icon-plus.svg';
+import { ReactComponent as MinusIcon } from 'assets/img/icon-minus.svg';
+
 const Container = styled.div`
-  background-color: red;
   display: flex;
-  width: 100px;
-  height: 40px;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  height: 57px;
+  background-color: ${({ theme }) => theme.color.lightGray};
+  color: ${({ theme }) => theme.color.black};
+  border-radius: ${({ theme }) => theme.borderRadius.s};
+  outline: none;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 15px;
+  overflow: hidden;
+
+  button {
+    width: 50px;
+    height: 100%;
+    border: none;
+  }
 `;
 
 // const initialState = {
@@ -38,9 +55,13 @@ const Quantity = ({ dispatch, quantity, negError }) => {
   // const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Container>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>
+        <MinusIcon />
+      </button>
       <h2>{quantity}</h2>
-      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>
+        <PlusIcon />
+      </button>
       {negError ? <h3>Error</h3> : ''}
     </Container>
   );
