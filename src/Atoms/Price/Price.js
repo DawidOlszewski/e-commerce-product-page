@@ -1,7 +1,14 @@
+import { ProductContext } from 'ProductPage';
 import styled from 'styled-components';
+import { useContext } from 'react';
 
 const Reduction = styled.h2``;
 const Container = styled.div`
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  padding: 30px 0;
+
   div {
     display: flex;
     flex-flow: nowrap row;
@@ -20,14 +27,15 @@ const Container = styled.div`
   }
 `;
 
-const Price = (props) => {
+const Price = () => {
+  const { price, prevPrice } = useContext(ProductContext);
   return (
     <Container>
       <div>
-        <h2>${props.Price}.00</h2>
-        <Reduction>{(props.Price / props.prevPrice) * 100}%</Reduction>
+        <h2>${price}.00</h2>
+        <Reduction>{(price / prevPrice) * 100}%</Reduction>
       </div>
-      <h3>${props.prevPrice}.00</h3>
+      <h3>${prevPrice}.00</h3>
     </Container>
   );
 };

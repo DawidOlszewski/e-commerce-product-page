@@ -4,89 +4,67 @@ import theme from 'theme.js';
 import styled, { ThemeProvider } from 'styled-components';
 import DesktopGallery from 'Molecules/DesktopGallery/DesktopGallery';
 import Price from 'Atoms/Price/Price';
-import Quantity from 'Atoms/Quantity/Quantity';
+import Quantity from 'Atoms/Quantity/QuantityInput';
 import SubmitBtn from 'Atoms/SubmitBtn/SubmitBtn';
 import DesktopNavBar from 'Molecules/DesktopNavBar/DesktopNavBar';
 import MobileNavBar from 'Molecules/MobileNavBar/MobileNavBar';
 import MobileMenu from 'Molecules/MobileMenu/MobileMenu';
 import MobileGallery from 'Molecules/MobileGallery/MobileGallery';
 import useWindowDimensions from 'WindowDimentions';
-import Description from 'Atoms/Description/Description';
+import ProductInfo from 'Atoms/ProductInfo/ProductInfo';
 import iconCartPath from 'assets/img/icon-cart.svg';
+import AddToCartForm from 'Molecules/AddToCartForm/AddToCartForm';
 
-const Container = styled.div`
+export const CartContext = React.createContext({
+  cartArray: {},
+  setCartArray: () => {},
+});
+
+export const OpenMenuContext = React.createContext({
+  openMenu: false,
+  setOpenMenu: () => {},
+});
+
+export const ProductContext = React.createContext({
+  company: '',
+  title: '',
+  description: '',
+  prevPrice: '',
+  price: '',
+});
+
+const MobileContainer = styled.div`
   padding: 20px;
 `;
 
-//quantity
-const initialState = {
-  quantity: 0,
-  negError: false,
-};
-
-function reducer(state, action) {
-  let newState = { ...initialState };
-
-  switch (action.type) {
-    case 'increment':
-      newState.quantity = state.quantity + 1;
-      return newState;
-    case 'decrement':
-      newState.quantity = state.quantity - 1;
-      if (newState.quantity < 0) {
-        newState.negError = true;
-        newState.quantity = 0;
-      }
-      return newState;
-    default:
-      throw new Error();
-  }
-}
-
 function ProductPage({
-  product: {
-    company,
-    title,
-    description,
-    price: [prevPrice, price],
-  },
+  product: { company, title, description, prevPrice, price },
 }) {
   const { width, height } = useWindowDimensions();
   const [openMenu, setOpenMenu] = useState(false);
-  const [state, dispatch] = useReducer(reducer, initialState);
   const [cartArray, setCartArray] = useState([{ title: 'aaa', amount: '1' }]);
 
   return (
     <ThemeProvider theme={theme}>
       <>
-        <GlobalStyle />
-        <MobileNavBar
-          openMenu={openMenu}
-          setOpenMenu={setOpenMenu}
-          cartArray={cartArray}
-        />
-        <MobileMenu open={openMenu} />
-        <MobileGallery />
-        <Container>
-          <Description Company={company} Title={title} Details={description} />
-          <Price Price={price} prevPrice={prevPrice}></Price>
-          <Quantity
-            quantity={state.quantity}
-            dispatch={dispatch}
-            negError={state.negError}
-          ></Quantity>
-          <SubmitBtn
-            icon={iconCartPath}
-            alt="cart icon"
-            text="Add to cart"
-            onClick={() =>
-              setCartArray((cartArray) => [
-                ...cartArray,
-                { title: title, amount: state.quantity },
-              ])
-            }
-          ></SubmitBtn>
-        </Container>
+        <ProductContext.Provider
+          value={{ company, title, description, prevPrice, price }}
+        >
+          <OpenMenuContext.Provider value={{ openMenu, setOpenMenu }}>
+            <CartContext.Provider value={{ cartArray, setCartArray }}>
+              <GlobalStyle />
+              <MobileNavBar cartArray={cartArray} />
+              <MobileMenu open={openMenu} />
+              <MobileGallery />
+              <MobileContainer>
+                <ProductInfo />
+                <Price />
+                <AddToCartForm />
+              </MobileContainer>
+            </CartContext.Provider>
+          </OpenMenuContext.Provider>
+        </ProductContext.Provider>
+        {/*ToDo: bad naming*/}
       </>
     </ThemeProvider>
   );

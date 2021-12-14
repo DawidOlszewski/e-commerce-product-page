@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as Cart } from 'assets/img/icon-cart.svg';
 
 const StyledBtn = styled.button`
   width: 100%;
@@ -10,15 +11,24 @@ const StyledBtn = styled.button`
   border: none;
   font-weight: 700;
   font-size: 16px;
+  display: ;
 `;
 
-const SubmitBtn = ({ src, alt, icon, text, ...props }) => {
-  return (
-    <StyledBtn {...props}>
-      <img src={icon} alt={props.alt} />
-      {text}
-    </StyledBtn>
-  );
+const SubmitBtn = ({ src, alt, icon, text, type }) => {
+  switch (type) {
+    case 'AddToCart':
+      return (
+        <StyledBtn>
+          <Cart />
+          Add to cart
+        </StyledBtn>
+      );
+    case 'Checkout': {
+      return <StyledBtn>Checkout</StyledBtn>;
+    }
+    default:
+      throw new Error();
+  }
 };
 
 export default SubmitBtn;

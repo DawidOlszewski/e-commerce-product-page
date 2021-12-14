@@ -55,7 +55,7 @@ const CartPopUp = ({ cartArray, openCart }) => {
           );
         })}
       </ul>
-      <SubmitBtn text="Chcekout" />
+      <SubmitBtn type="Checkout" />
     </Container>
   );
 };
