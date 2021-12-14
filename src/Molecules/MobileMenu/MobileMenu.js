@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { OpenMenuContext } from 'ProductPage';
+import { useContext } from 'react';
 
 export const StyledMenu = styled.nav`
   display: flex;
@@ -12,7 +14,7 @@ export const StyledMenu = styled.nav`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zindex.menu};
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
 
@@ -41,9 +43,10 @@ export const StyledMenu = styled.nav`
   }
 `;
 
-const MobileMenu = ({ open }) => {
+const MobileMenu = () => {
+  const { openMenu } = useContext(OpenMenuContext);
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={openMenu}>
       <a href="/">About us</a>
       <a href="/">Pricing</a>
       <a href="/">Contact</a>

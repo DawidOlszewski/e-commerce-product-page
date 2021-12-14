@@ -21,6 +21,11 @@ const theme = {
     m: '20px',
     l: '30px',
   },
+  zindex: {
+    cartPopUp: '10',
+    menuButton: '1000',
+    menu: '100',
+  },
 };
 
 export default theme;

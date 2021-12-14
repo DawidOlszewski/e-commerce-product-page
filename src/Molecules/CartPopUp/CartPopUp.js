@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import SubmitBtn from 'Atoms/SubmitBtn/SubmitBtn';
+import theme from 'theme';
 
 const Container = styled.div`
   ${({ openCart }) => (openCart ? '' : 'display:none;')}
@@ -9,7 +10,7 @@ const Container = styled.div`
   position: absolute;
   min-height: 100px;
   background-color: ${({ theme }) => theme.color.white};
-  z-index: 1000; //TODO: change the z-indexes
+  z-index: ${({ theme }) => theme.zindex.cartPopUp};
 
   h2 {
     position: relative;

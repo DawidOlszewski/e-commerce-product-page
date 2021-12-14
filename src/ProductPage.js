@@ -53,8 +53,8 @@ function ProductPage({
           <OpenMenuContext.Provider value={{ openMenu, setOpenMenu }}>
             <CartContext.Provider value={{ cartArray, setCartArray }}>
               <GlobalStyle />
-              <MobileNavBar cartArray={cartArray} />
-              <MobileMenu open={openMenu} />
+              <MobileNavBar />
+              <MobileMenu />
               <MobileGallery />
               <MobileContainer>
                 <ProductInfo />
