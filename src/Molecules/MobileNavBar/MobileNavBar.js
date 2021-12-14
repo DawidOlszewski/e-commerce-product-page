@@ -7,9 +7,10 @@ import {
   StyledBurger,
   CounterCart,
 } from 'Molecules/MobileNavBar/MobileNavBar.style';
-import { OpenMenuContext } from 'ProductPage';
+import { CartContext, OpenMenuContext } from 'ProductPage';
 
-const MobileNavBar = ({ cartArray }) => {
+const MobileNavBar = () => {
+  const { cartArray } = useContext(CartContext);
   const [openCart, setOpenCart] = useState({});
   const { openMenu, setOpenMenu } = useContext(OpenMenuContext);
   return (
