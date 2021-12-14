@@ -51,7 +51,6 @@ const DesktopNavBar = () => {
   return (
     <Wrapper>
       <nav>
-        {/* <Hamburger /> */}
         <Logo />
         <Link>Collection</Link>
         <Link>Collection</Link>

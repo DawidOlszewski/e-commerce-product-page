@@ -6,11 +6,10 @@ export const StyledMenu = styled.nav`
   display: flex;
   background-color: red;
   flex-direction: column;
-  justify-content: center;
-  //   background: ${({ theme }) => theme.primaryLight};
+  background-color: ${({ theme }) => theme.color.white};
   height: 100vh;
-  text-align: left;
-  padding: 2rem;
+  width: 60vw;
+  padding: 90px 10px 0 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -18,22 +17,20 @@ export const StyledMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
 
-  @media (max-width: 300px) {
+  @media (max-width: 360px) {
     width: 100%;
   }
 
   a {
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 2rem 0;
+    font-size: 16px;
     font-weight: bold;
-    letter-spacing: 0.5rem;
-    color: ${({ theme }) => theme.primaryDark};
+    color: ${({ theme }) => theme.color.black};
     text-decoration: none;
     transition: color 0.3s linear;
+    margin-bottom: 15px;
 
-    @media (max-width: 300px) {
-      font-size: 1.5rem;
+    @media (max-width: 360px) {
+      font-size: 20px;
       text-align: center;
     }
 

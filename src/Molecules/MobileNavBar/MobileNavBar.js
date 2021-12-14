@@ -5,7 +5,7 @@ import { useState, useContext } from 'react';
 import {
   StyledHeader,
   StyledBurger,
-  CounterCart,
+  Cart,
 } from 'Molecules/MobileNavBar/MobileNavBar.style';
 import { CartContext, OpenMenuContext } from 'ProductPage';
 
@@ -25,7 +25,7 @@ const MobileNavBar = () => {
           <div />
         </StyledBurger>
         <Logo></Logo>
-        <CounterCart
+        <Cart
           amount={cartArray.length}
           onClick={() => setOpenCart((open) => !open)}
         />

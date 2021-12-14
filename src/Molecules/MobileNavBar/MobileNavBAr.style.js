@@ -3,17 +3,15 @@ import cartPath from 'assets/img/icon-cart.svg';
 
 export const StyledBurger = styled.button`
   position: relative;
-  //   top: 5%;
-  //   left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  height: 19.5px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-right: 15px;
   z-index: ${({ theme }) => theme.zindex.menuButton};
 
   &:focus {
@@ -21,10 +19,10 @@ export const StyledBurger = styled.button`
   }
 
   div {
-    width: 2rem;
-    height: 0.25rem;
-    background: ${({ open }) => (open ? '#0D0C1D' : '#EFFFFA')};
-    border-radius: 10px;
+    width: 19.5px;
+    height: 2.5px;
+    background: ${({ theme }) => theme.color.gray};
+    border-radius: 0px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
@@ -44,37 +42,66 @@ export const StyledBurger = styled.button`
   }
 `;
 
-export const CounterCart = styled.button`
+export const Cart = styled.button`
   position: relative;
-  aspect-ratio: 1;
+  width: 25px;
   border: none;
-  height: 100%;
-  background: url(${cartPath}) no-repeat;
-  background-size: cover;
+  height: 25px;
+  margin-right: 10px;
+  background-color: transparent;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    mask: url(${cartPath}) no-repeat 50% 50%;
+    background-color: ${({ theme }) => theme.color.gray};
+    background-size: 100% 100%;
+  }
 
   &::after {
-    content: '${({ amount }) => amount}';
+    ${({ amount }) => (amount ? `content: '${amount}';` : '')}
+
     position: absolute;
-    background-color: pink;
+    background-color: ${({ theme }) => theme.color.orange};
     width: 20px;
     border-radius: 5px;
-    height: 10px;
-    top: 5px;
+    height: 12px;
+    top: 0;
     right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 8px;
+    color: white;
+    font-weight: bold;
+    transform: translateX(50%) translateY(-10%);
   }
 `;
 
 export const StyledHeader = styled.header`
-  background-color: red;
-  //   position: absolute;
-  padding: 15px;
-  //   top: 0;
-  //   left: 0;
+  background-color: ${({ theme }) => theme.color.white};
+  padding: 23.5px;
+
   width: 100%;
   height: 67px;
   display: flex;
+  align-items: center;
 
-  :first-child {
-    background-color: blue;
+  svg,
+  svg path {
+    height: 100%;
+  }
+
+  img {
+    height: 30px;
+  }
+
+  svg {
+    margin-right: auto;
   }
 `;
