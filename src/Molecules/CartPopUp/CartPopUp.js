@@ -8,17 +8,24 @@ const Container = styled.div`
   left: 20px;
   right: 20px;
   position: absolute;
-  min-height: 100px;
+  min-height: 130px;
+  border-radius: ${({ theme }) => theme.borderRadius.s};
   background-color: ${({ theme }) => theme.color.white};
   z-index: ${({ theme }) => theme.zindex.cartPopUp};
+
+  div {
+    padding: 20px;
+  }
 
   h2 {
     position: relative;
     display: flex;
     width: 100%;
     height: 67px;
-    padding-left: 10px;
+    padding-left: 20px;
     align-items: center;
+    font-size: 15px;
+    font-weight: bold;
 
     &:after {
       content: '';
@@ -26,7 +33,7 @@ const Container = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: gray;
+      background-color: ${({ theme }) => theme.color.lightGray};
       height: 1px;
     }
   }
@@ -36,9 +43,12 @@ const Container = styled.div`
   }
 
   li {
-    padding-bottom: 10px;
+    margin-top: 20px;
+    &:first-of-type {
+      margin-top: 0;
+    }
     &:last-of-type {
-      padding-bottom: 0;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -46,17 +56,30 @@ const Container = styled.div`
 const CartPopUp = ({ cartArray, openCart }) => {
   return (
     <Container openCart={openCart}>
-      <h2>Cart: </h2>
-      <ul>
-        {cartArray.map(({ title, amount, cost }, index) => {
-          return (
-            <li>
-              {title} , {amount}
-            </li>
-          );
-        })}
-      </ul>
-      <SubmitBtn type="Checkout" />
+      <h2>Cart</h2>
+      <div>
+        <ul>
+          {cartArray.map(({ title, amount, cost }, index) => {
+            return (
+              <li>
+                {title} , {amount}
+              </li>
+            );
+            // return (
+            //   <li>
+            //     <img src="img" />
+            //     <div>
+            //       <p>{title}</p>
+            //       <p>
+            //         ${cost} x {amount} <span>${cost * amount}</span>
+            //       </p>
+            //     </div>
+            //   </li>
+            // );
+          })}
+        </ul>
+        <SubmitBtn type="Checkout" />
+      </div>
     </Container>
   );
 };

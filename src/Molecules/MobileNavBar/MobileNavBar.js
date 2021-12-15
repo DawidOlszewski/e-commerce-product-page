@@ -26,6 +26,7 @@ const MobileNavBar = () => {
         </StyledBurger>
         <Logo></Logo>
         <Cart
+          openCart={openCart}
           amount={cartArray.length}
           onClick={() => setOpenCart((open) => !open)}
         />

@@ -64,7 +64,6 @@ function ProductPage({
             </CartContext.Provider>
           </OpenMenuContext.Provider>
         </ProductContext.Provider>
-        {/*ToDo: bad naming*/}
       </>
     </ThemeProvider>
   );

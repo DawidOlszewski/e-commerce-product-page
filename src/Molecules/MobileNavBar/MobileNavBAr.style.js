@@ -57,8 +57,10 @@ export const Cart = styled.button`
     right: 0;
     bottom: 0;
     mask: url(${cartPath}) no-repeat 50% 50%;
-    background-color: ${({ theme }) => theme.color.gray};
+    background-color: ${({ theme, openCart }) =>
+      openCart ? theme.color.gray : theme.color.black};
     background-size: 100% 100%;
+    transition: background-color 0.1s ease-in-out;
   }
 
   &::after {
