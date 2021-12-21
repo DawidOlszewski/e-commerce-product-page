@@ -10,7 +10,7 @@ import {
 import { CartContext, OpenMenuContext } from 'ProductPage';
 
 const MobileNavBar = () => {
-  const { cartArray } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   const [openCart, setOpenCart] = useState({});
   const { openMenu, setOpenMenu } = useContext(OpenMenuContext);
   return (
@@ -27,12 +27,12 @@ const MobileNavBar = () => {
         <Logo></Logo>
         <Cart
           openCart={openCart}
-          amount={cartArray.length}
+          amount={cartItems[0].amount}
           onClick={() => setOpenCart((open) => !open)}
         />
         <img src={avatarPath} alt="avatar" />
       </StyledHeader>
-      <CartPopUp openCart={openCart} cartArray={cartArray} />
+      <CartPopUp openCart={openCart} cartItems={cartItems} />
     </>
   );
 };

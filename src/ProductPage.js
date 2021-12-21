@@ -10,14 +10,16 @@ import DesktopNavBar from 'Molecules/DesktopNavBar/DesktopNavBar';
 import MobileNavBar from 'Molecules/MobileNavBar/MobileNavBar';
 import MobileMenu from 'Molecules/MobileMenu/MobileMenu';
 import MobileGallery from 'Molecules/MobileGallery/MobileGallery';
-import useWindowDimensions from 'WindowDimentions';
+import useWindowDimensions from 'Helpers/WindowDimentionsHelper';
 import ProductInfo from 'Atoms/ProductInfo/ProductInfo';
 import iconCartPath from 'assets/img/icon-cart.svg';
 import AddToCartForm from 'Molecules/AddToCartForm/AddToCartForm';
+import useCart from 'Helpers/CartHelper';
 
 export const CartContext = React.createContext({
-  cartArray: {},
-  setCartArray: () => {},
+  cartItems: [],
+  deleteCartItem: () => {},
+  addCartItem: () => {},
 });
 
 export const OpenMenuContext = React.createContext({
@@ -42,7 +44,7 @@ function ProductPage({
 }) {
   const { width, height } = useWindowDimensions();
   const [openMenu, setOpenMenu] = useState(false);
-  const [cartArray, setCartArray] = useState([{ title: 'aaa', amount: '1' }]);
+  const [addCartItem, deleteCartItem, cartItems] = useCart();
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,7 +53,9 @@ function ProductPage({
           value={{ company, title, description, prevPrice, price }}
         >
           <OpenMenuContext.Provider value={{ openMenu, setOpenMenu }}>
-            <CartContext.Provider value={{ cartArray, setCartArray }}>
+            <CartContext.Provider
+              value={{ addCartItem, deleteCartItem, cartItems }}
+            >
               <GlobalStyle />
               <MobileNavBar />
               <MobileMenu />

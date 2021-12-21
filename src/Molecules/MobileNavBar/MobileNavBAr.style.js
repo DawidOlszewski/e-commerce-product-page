@@ -49,6 +49,7 @@ export const Cart = styled.button`
   height: 25px;
   margin-right: 10px;
   background-color: transparent;
+  cursor: pointer;
   &::before {
     content: '';
     position: absolute;

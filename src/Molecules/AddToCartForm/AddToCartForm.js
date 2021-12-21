@@ -54,18 +54,19 @@ function reducer(state, action) {
 
 const AddToCartForm = () => {
   const [formState, dispatch] = useReducer(reducer, { ...initialState });
-  const { setCartArray } = useContext(CartContext);
+  const { addCartItem } = useContext(CartContext);
   return (
     <>
       <QuantityInput dispatch={dispatch} formState={formState} />
       {/* <SubmitBtn type="AddToCart" /> */}
       <StyledBtn
-        onClick={() =>
-          setCartArray([{ title: 'aa', amount: formState.quantity }])
-        }
+        onClick={() => {
+          console.log(formState.quantity);
+          addCartItem('Fall Limited Edition Sneakers', formState.quantity);
+        }}
       >
         <Cart />
-        1234
+        Add To Cart
       </StyledBtn>
     </>
   );
