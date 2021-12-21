@@ -17,8 +17,16 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   z-index: ${({ theme }) => theme.zindex.cartPopUp};
 
-  div {
+  & > div {
     padding: 20px;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 127px;
+      color: gray;
+      font-weight: bold;
+    }
   }
 
   h2 {
@@ -114,10 +122,10 @@ const CartPopUp = ({ cartItems, openCart }) => {
   return (
     <Container openCart={openCart}>
       <h2>Cart</h2>
-      <div>
-        <ul>
-          {cartItems.map((cartItem, index) => {
-            return (
+      {cartItems[0].amount ? (
+        <div>
+          <ul>
+            {cartItems.map((cartItem, index) => (
               <li>
                 <img src={image0} alt="carts img" />
                 <div>
@@ -129,11 +137,15 @@ const CartPopUp = ({ cartItems, openCart }) => {
                 </div>
                 <DeleteIcon onClick={() => deleteCartItem()} />
               </li>
-            );
-          })}
-        </ul>
-        <SubmitBtn type="Checkout" />
-      </div>
+            ))}
+          </ul>
+          <SubmitBtn type="Checkout" />
+        </div>
+      ) : (
+        <div>
+          <div>Your cart is empty.</div>
+        </div>
+      )}
     </Container>
   );
 };
