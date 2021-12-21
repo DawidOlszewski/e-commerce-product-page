@@ -11,24 +11,20 @@ const StyledBtn = styled.button`
   border: none;
   font-weight: 700;
   font-size: 16px;
-  display: ;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :hover {
+    background-color: ${({ theme }) => theme.color.lightOrange};
+  }
+  svg {
+    margin-right: 10px;
+
+    path {
+      fill: white;
+    }
+  }
 `;
 
-const SubmitBtn = ({ src, alt, icon, text, type }) => {
-  switch (type) {
-    case 'AddToCart':
-      return (
-        <StyledBtn>
-          <Cart />
-          Add to cart
-        </StyledBtn>
-      );
-    case 'Checkout': {
-      return <StyledBtn>Checkout</StyledBtn>;
-    }
-    default:
-      throw new Error();
-  }
-};
-
-export default SubmitBtn;
+export default StyledBtn;

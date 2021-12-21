@@ -5,29 +5,6 @@ import { ReactComponent as Cart } from 'assets/img/icon-cart.svg';
 import styled from 'styled-components';
 import { CartContext } from 'ProductPage';
 
-const StyledBtn = styled.button`
-  width: 100%;
-  height: 57px;
-  background-color: ${({ theme }) => theme.color.orange};
-  color: ${({ theme }) => theme.color.paleOrange};
-  border-radius: ${({ theme }) => theme.borderRadius.s};
-  outline: none;
-  border: none;
-  font-weight: 700;
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    margin-right: 10px;
-
-    path {
-      fill: white;
-    }
-  }
-`;
-
 const initialState = {
   quantity: 0,
   isError: false,
@@ -58,8 +35,7 @@ const AddToCartForm = () => {
   return (
     <>
       <QuantityInput dispatch={dispatch} formState={formState} />
-      {/* <SubmitBtn type="AddToCart" /> */}
-      <StyledBtn
+      <SubmitBtn
         onClick={() => {
           console.log(formState.quantity);
           addCartItem('Fall Limited Edition Sneakers', formState.quantity);
@@ -67,7 +43,7 @@ const AddToCartForm = () => {
       >
         <Cart />
         Add To Cart
-      </StyledBtn>
+      </SubmitBtn>
     </>
   );
 };

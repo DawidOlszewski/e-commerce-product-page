@@ -10,7 +10,7 @@ export const StyledMenu = styled.nav`
   height: 100vh;
   width: 60vw;
   padding: 90px 10px 0 20px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: ${({ theme }) => theme.zindex.menu};

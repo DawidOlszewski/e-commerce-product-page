@@ -15,15 +15,17 @@ const Container = styled.div`
     align-items: center;
 
     ${Reduction} {
-      font-size: 10px;
-      padding: 5px 10px;
+      font-size: 13px;
+      padding: 3px 7px;
       margin-left: 20px;
-      border-radius: 10px;
-      background-color: orange;
+      border-radius: ${({ theme }) => theme.borderRadius.xs};
+      background-color: ${({ theme }) => theme.color.paleOrange};
+      color: ${({ theme }) => theme.color.orange};
     }
   }
   h3 {
     text-decoration: line-through;
+    color: gray;
   }
 `;
 

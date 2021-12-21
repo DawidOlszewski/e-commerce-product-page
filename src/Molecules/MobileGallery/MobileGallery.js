@@ -29,6 +29,10 @@ const Container = styled.div`
     border-radius: 50%;
     outline: none;
     border: none;
+    cursor: pointer;
+    path {
+      transition: stroke 0.2s;
+    }
 
     &:hover {
       & path {

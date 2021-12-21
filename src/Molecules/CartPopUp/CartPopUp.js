@@ -139,7 +139,7 @@ const CartPopUp = ({ cartItems, openCart }) => {
               </li>
             ))}
           </ul>
-          <SubmitBtn type="Checkout" />
+          <SubmitBtn>Checkout</SubmitBtn>
         </div>
       ) : (
         <div>

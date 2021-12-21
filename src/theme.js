@@ -2,6 +2,7 @@ const theme = {
   color: {
     orange: 'hsl(26, 100%, 55%)',
     paleOrange: 'hsl(25, 100%, 94%)',
+    lightOrange: 'hsl(26, 100%, 77%)',
     veryDarkBlue: 'hsl(220, 13%, 13%)',
     darkGrayishBlue: 'hsl(219, 9%, 45%)',
     grayishBlue: 'hsl(220, 14%, 75%)',
@@ -17,6 +18,7 @@ const theme = {
     l: '300px',
   },
   borderRadius: {
+    xs: '3px',
     s: '10px',
     m: '20px',
     l: '30px',

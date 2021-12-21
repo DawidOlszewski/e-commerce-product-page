@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useReducer } from 'react';
 
-import { ReactComponent as PlusIcon } from 'assets/img/icon-plus.svg';
-import { ReactComponent as MinusIcon } from 'assets/img/icon-minus.svg';
+import plusIcon from 'assets/img/icon-plus.svg';
+import minusIcon from 'assets/img/icon-minus.svg';
 
 const Container = styled.div`
   display: flex;
@@ -21,22 +21,42 @@ const Container = styled.div`
   overflow: hidden;
 
   button {
+    position: relative;
+    cursor: pointer;
     width: 50px;
     height: 100%;
     border: none;
+    &:nth-of-type(1) {
+      mask: url(${minusIcon}) no-repeat 50% 50%;
+    }
+
+    &:nth-of-type(2) {
+      mask: url(${plusIcon}) no-repeat 50% 50%;
+    }
+  }
+
+  button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({ theme }) => theme.color.orange};
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  button:hover::before {
+    background-color: ${({ theme }) => theme.color.lightOrange};
   }
 `;
 
 const QuantityInput = ({ dispatch, formState: { quantity, isError } }) => {
   return (
     <Container>
-      <button onClick={() => dispatch({ type: 'decrement' })}>
-        <MinusIcon />
-      </button>
+      <button onClick={() => dispatch({ type: 'decrement' })} />
       <h2>{quantity}</h2>
-      <button onClick={() => dispatch({ type: 'increment' })}>
-        <PlusIcon />
-      </button>
+      <button onClick={() => dispatch({ type: 'increment' })} />
       {isError ? <h3>Error</h3> : ''}
     </Container>
   );

@@ -1,11 +1,11 @@
 import { ReactComponent as Logo } from 'assets/img/logo.svg';
-import avatarPath from 'assets/img/image-avatar.png';
 import CartPopUp from 'Molecules/CartPopUp/CartPopUp';
 import { useState, useContext } from 'react';
 import {
   StyledHeader,
   StyledBurger,
   Cart,
+  AvatarBtn,
 } from 'Molecules/MobileNavBar/MobileNavBar.style';
 import { CartContext, OpenMenuContext } from 'ProductPage';
 
@@ -30,7 +30,8 @@ const MobileNavBar = () => {
           amount={cartItems[0].amount}
           onClick={() => setOpenCart((open) => !open)}
         />
-        <img src={avatarPath} alt="avatar" />
+        {/* <AvatarBtn src={avatarPath} alt="avatar" /> */}
+        <AvatarBtn />
       </StyledHeader>
       <CartPopUp openCart={openCart} cartItems={cartItems} />
     </>

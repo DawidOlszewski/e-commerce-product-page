@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import cartPath from 'assets/img/icon-cart.svg';
+import avatarPath from 'assets/img/image-avatar.png';
 
 export const StyledBurger = styled.button`
   position: relative;
@@ -100,11 +101,31 @@ export const StyledHeader = styled.header`
     height: 100%;
   }
 
-  img {
-    height: 30px;
-  }
-
   svg {
     margin-right: auto;
+  }
+`;
+
+export const AvatarBtn = styled.div`
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: relative;
+  background: url(${avatarPath});
+  background-size: cover;
+
+  &:before {
+    content: '';
+    position: absolute;
+    border-radius: 15px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: border 0.1s;
+  }
+  &:hover::before {
+    border: 2.3px ${({ theme }) => theme.color.orange} solid;
+    transform: scale(1.1);
   }
 `;
