@@ -16,6 +16,7 @@ const Container = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.s};
   background-color: ${({ theme }) => theme.color.white};
   z-index: ${({ theme }) => theme.zindex.cartPopUp};
+  box-shadow: 0px 7px 40px -20px black;
 
   & > div {
     padding: 20px;

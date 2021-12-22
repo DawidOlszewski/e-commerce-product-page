@@ -92,18 +92,58 @@ export const Cart = styled.button`
 `;
 
 export const StyledHeader = styled.header`
-  background-color: ${({ theme, isBig }) =>
-    isBig ? 'red' : theme.color.white};
+  position: relative;
+  // background-color: ;
+  background-color: white;
 
   padding: 0 ${({ isBig }) => (isBig ? '40px' : '23.5px')};
 
   width: 100%;
-  height: 67px;
+  height: ${({ isBig }) => (isBig ? '120px' : '67px')};
   display: flex;
   align-items: center;
 
   svg {
     margin-right: auto;
+  }
+
+  nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    gap: 15px;
+
+    & p {
+      position: relative;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    & p:hover::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 4px;
+      left: 0;
+      right: 0;
+      background-color: red;
+    }
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    background-color: lightgray;
+    left: 38px;
+    right: 38px;
+    height: 1px;
   }
 `;
 
@@ -138,7 +178,7 @@ export const Logo = styled.div`
   border: none;
   height: 30px;
   width: 140px;
-  margin-right: auto;
+  margin-right: ${({ isBig }) => (isBig ? '30px' : 'auto')};
   background-color: transparent;
   cursor: pointer;
   ${({ isBig }) => (isBig ? 'width:180px;' : null)}

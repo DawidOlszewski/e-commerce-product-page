@@ -29,14 +29,14 @@ const MobileNavBar = ({ isBig }) => {
 
         <Logo isBig={isBig} />
 
-        {/* {isBig ? (
+        {isBig ? (
           <nav>
             <p>Collection</p>
-            <p>Collection</p>
-            <p>Collection</p>
-            <p>Collection</p>
+            <p>Men</p>
+            <p>Women</p>
+            <p>About us</p>
           </nav>
-        ) : null} */}
+        ) : null}
 
         <Cart
           isBig={isBig}
