@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 export const Grid = styled.div`
   display: grid;
-  width: 100%;
-  gap: 5%;
+  column-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
-  // grid-template-rows:
   grid-template-areas: 'big-img big-img big-img big-img' 'img0 img1 img2 img3';
 
   > img {
@@ -14,6 +12,7 @@ export const Grid = styled.div`
 `;
 
 export const BigImg = styled.img`
+  margin-bottom: 20px;
   grid-area: big-img;
   border-radius: ${(props) => props.theme.borderRadius.m};
 `;

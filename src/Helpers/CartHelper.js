@@ -29,7 +29,6 @@ const useCart = () => {
     setCartItems((cartItems) => {
       let newCI = [...cartItems];
       newCI[0].amount = 0;
-      console.log(newCI);
       return newCI;
     });
   };

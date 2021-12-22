@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useReducer } from 'react';
 
 import plusIcon from 'assets/img/icon-plus.svg';
 import minusIcon from 'assets/img/icon-minus.svg';
@@ -57,7 +56,7 @@ const QuantityInput = ({ dispatch, formState: { quantity, isError } }) => {
       <button onClick={() => dispatch({ type: 'decrement' })} />
       <h2>{quantity}</h2>
       <button onClick={() => dispatch({ type: 'increment' })} />
-      {isError ? <h3>Error</h3> : ''}
+      {/* {isError ? <h3>Error</h3> : ''} */}
     </Container>
   );
 };

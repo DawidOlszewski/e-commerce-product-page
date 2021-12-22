@@ -90,6 +90,15 @@ const Container = styled.div`
       color: black;
     }
   }
+
+  @media (min-width: 400px) {
+    left: initial;
+    width: 300px;
+
+    li div p:first-of-type {
+      width: 150px;
+    }
+  }
 `;
 
 const DeleteIcon = styled.button`

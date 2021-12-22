@@ -4,8 +4,6 @@ import theme from 'theme.js';
 import styled, { ThemeProvider } from 'styled-components';
 import DesktopGallery from 'Molecules/DesktopGallery/DesktopGallery';
 import Price from 'Atoms/Price/Price';
-import Quantity from 'Atoms/Quantity/QuantityInput';
-import SubmitBtn from 'Atoms/SubmitBtn/SubmitBtn';
 import DesktopNavBar from 'Molecules/DesktopNavBar/DesktopNavBar';
 import MobileNavBar from 'Molecules/MobileNavBar/MobileNavBar';
 import MobileMenu from 'Molecules/MobileMenu/MobileMenu';
@@ -39,6 +37,18 @@ const MobileContainer = styled.div`
   padding: 20px;
 `;
 
+const DesktopContainer = styled.div`
+  width: 100%;
+`;
+const Content = styled.div`
+  height: calc(100vh - 67px);
+  padding: 0 60px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 60px;
+`;
+
 function ProductPage({
   product: { company, title, description, prevPrice, price },
 }) {
@@ -57,14 +67,30 @@ function ProductPage({
               value={{ addCartItem, deleteCartItem, cartItems }}
             >
               <GlobalStyle />
-              <MobileNavBar />
-              <MobileMenu />
-              <MobileGallery />
-              <MobileContainer>
-                <ProductInfo />
-                <Price />
-                <AddToCartForm />
-              </MobileContainer>
+              {width > 800 ? (
+                <>
+                  <MobileNavBar isBig />
+                  <Content>
+                    <DesktopGallery />
+                    <DesktopContainer>
+                      <ProductInfo />
+                      <Price />
+                      <AddToCartForm />
+                    </DesktopContainer>
+                  </Content>
+                </>
+              ) : (
+                <>
+                  <MobileNavBar />
+                  <MobileMenu />
+                  <MobileGallery />
+                  <MobileContainer>
+                    <ProductInfo />
+                    <Price />
+                    <AddToCartForm />
+                  </MobileContainer>
+                </>
+              )}
             </CartContext.Provider>
           </OpenMenuContext.Provider>
         </ProductContext.Provider>

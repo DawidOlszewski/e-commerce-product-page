@@ -18,11 +18,14 @@ html,body {
 body{
     width: 100%;
     height: 100vh;
+    
 }
-
-// #root{
-//     height: 100%;
+// @media (min-width: 800px){
+    #root{
+        height: 100vh;
+    }
 // }
+
 `;
 
 export default GlobalStyle;

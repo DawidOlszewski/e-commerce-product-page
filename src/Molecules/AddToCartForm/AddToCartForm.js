@@ -5,6 +5,13 @@ import { ReactComponent as Cart } from 'assets/img/icon-cart.svg';
 import styled from 'styled-components';
 import { CartContext } from 'ProductPage';
 
+const Container = styled.div`
+  @media (min-width: 900px) {
+    display: flex;
+    gap: 20px;
+  }
+`;
+
 const initialState = {
   quantity: 0,
   isError: false,
@@ -33,7 +40,7 @@ const AddToCartForm = () => {
   const [formState, dispatch] = useReducer(reducer, { ...initialState });
   const { addCartItem } = useContext(CartContext);
   return (
-    <>
+    <Container>
       <QuantityInput dispatch={dispatch} formState={formState} />
       <SubmitBtn
         onClick={() => {
@@ -44,7 +51,7 @@ const AddToCartForm = () => {
         <Cart />
         Add To Cart
       </SubmitBtn>
-    </>
+    </Container>
   );
 };
 export default AddToCartForm;
