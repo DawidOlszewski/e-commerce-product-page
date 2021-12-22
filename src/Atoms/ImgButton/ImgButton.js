@@ -9,10 +9,24 @@ const ThumbnailButton = styled.button`
   padding: 5px;
   background: url(${(props) => props.src});
   background-size: cover;
-  ${(props) => {
-    if (!props.active) return '';
-    return 'border: 5px green solid';
-  }}
+  position: relative;
+  cursor: pointer;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: inherit;
+    ${(props) => {
+      if (!props.active) return '';
+      return 'border: 3px orange solid;background-color: hsl(1,20%,0%,30%);';
+    }}// TODO: color
+  }
+  &:hover::before {
+    background-color: hsl(1, 20%, 0%, 30%);
+  }
 `;
 
 const ImgButton = (props) => {
