@@ -38,15 +38,15 @@ const MobileContainer = styled.div`
 `;
 
 const DesktopContainer = styled.div`
-  width: 100%;
+  margin-left: 60px;
 `;
 const Content = styled.div`
-  height: calc(100vh - 67px);
+  height: calc(100vh - 120px);
   padding: 0 60px;
-  display: flex;
-  flex-flow: row nowrap;
+  display: grid;
   align-items: center;
-  gap: 60px;
+  grid-template-columns: min(40vw, 400px) 1fr;
+  grid-template-areas: '. .';
 `;
 
 function ProductPage({
