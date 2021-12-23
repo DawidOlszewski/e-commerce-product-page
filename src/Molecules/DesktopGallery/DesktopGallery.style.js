@@ -14,6 +14,7 @@ export const Grid = styled.div`
 export const BigImg = styled.img`
   margin-bottom: 20px;
   grid-area: big-img;
+  cursor: pointer;
   border-radius: ${(props) => props.theme.borderRadius.m};
 `;
 
