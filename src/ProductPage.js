@@ -38,16 +38,33 @@ const MobileContainer = styled.div`
 `;
 
 const DesktopContainer = styled.div`
-  margin-left: 60px;
+  margin-left: 8vw;
 `;
-const Content = styled.div`
-  height: calc(100vh - 120px);
+const Grid = styled.div`
+  max-width: 1100px;
   padding: 0 60px;
   display: grid;
   align-items: center;
   grid-template-columns: min(40vw, 400px) 1fr;
   grid-template-areas: '. .';
 `;
+
+const Flex = styled.div`
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 120px);
+
+  align-items: center;
+  justify-content: center;
+`;
+
+const Content = ({ children }) => {
+  return (
+    <Flex>
+      <Grid>{children}</Grid>
+    </Flex>
+  );
+};
 
 function ProductPage({
   product: { company, title, description, prevPrice, price },
@@ -75,7 +92,7 @@ function ProductPage({
                     <DesktopContainer>
                       <ProductInfo />
                       <Price />
-                      <AddToCartForm />
+                      <AddToCartForm isBig />
                     </DesktopContainer>
                   </Content>
                 </>

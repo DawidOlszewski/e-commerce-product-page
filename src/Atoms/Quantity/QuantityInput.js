@@ -48,11 +48,18 @@ const Container = styled.div`
   button:hover::before {
     background-color: ${({ theme }) => theme.color.lightOrange};
   }
+  @media (min-width: 900px) {
+    width: 50%;
+  }
 `;
 
-const QuantityInput = ({ dispatch, formState: { quantity, isError } }) => {
+const QuantityInput = ({
+  dispatch,
+  formState: { quantity, isError },
+  isBig,
+}) => {
   return (
-    <Container>
+    <Container isBig={isBig}>
       <button onClick={() => dispatch({ type: 'decrement' })} />
       <h2>{quantity}</h2>
       <button onClick={() => dispatch({ type: 'increment' })} />

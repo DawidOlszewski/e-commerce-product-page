@@ -36,13 +36,14 @@ function reducer(state, action) {
   }
 }
 
-const AddToCartForm = () => {
+const AddToCartForm = ({ isBig }) => {
   const [formState, dispatch] = useReducer(reducer, { ...initialState });
   const { addCartItem } = useContext(CartContext);
   return (
     <Container>
-      <QuantityInput dispatch={dispatch} formState={formState} />
+      <QuantityInput isBig={isBig} dispatch={dispatch} formState={formState} />
       <SubmitBtn
+        isBig={isBig}
         onClick={() => {
           console.log(formState.quantity);
           addCartItem('Fall Limited Edition Sneakers', formState.quantity);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ImgButton from 'Atoms/ImgButton/ImgButton';
-
+import GalleryModal from 'Molecules/GalleryModal/GalleryModal';
 import { Grid, BigImg } from './DesktopGallery.style';
 
 import image1 from 'assets/img/image-product-1.jpg';
@@ -16,11 +16,24 @@ const imageThumbs = [imageThum1, imageThum2, imageThum3, imageThum4];
 
 const DesktopGallery = (props) => {
   const [focused, setfocused] = useState(0);
+  const [isFullSize, setFullSize] = useState(false);
 
   return (
     <Grid>
-      <BigImg src={images[focused]} alt="big img" />
-
+      <BigImg
+        src={images[focused]}
+        alt="big img"
+        onClick={() => setFullSize(true)}
+      />
+      {isFullSize ? (
+        <GalleryModal
+          closePortal={() => setFullSize(false)}
+          images={images}
+          imageThumbs={imageThumbs}
+          setfocused={setfocused}
+          focused={focused}
+        />
+      ) : null}
       {imageThumbs.map((img, index) => (
         <ImgButton
           active={index === focused}
